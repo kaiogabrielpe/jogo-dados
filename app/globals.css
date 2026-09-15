@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta: mesa de feltro / tabuleiro de jogo */
+  --feltro-900: #16332a;
+  --feltro-800: #1f4d3d;
+  --feltro-700: #2c6350;
+  --pergaminho: #fbf5e9;
+  --pergaminho-escuro: #efe4cd;
+  --tinta: #1b2430;
+  --tinta-suave: #4b5563;
+  --dourado: #d9a441;
+  --dourado-escuro: #b8842b;
+  --vermelho-empate: #9a4a3a;
+
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    "Times New Roman", serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: var(--feltro-900);
+  color: var(--tinta);
+  font-family: var(--font-body), system-ui, sans-serif;
+  margin: 0;
+}
+
+.pagina {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.05), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(0, 0, 0, 0.25), transparent 55%),
+    linear-gradient(160deg, var(--feltro-800), var(--feltro-900) 70%);
+}
+
+.tabuleiro {
+  width: 100%;
+  max-width: 44rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.cabecalho {
+  text-align: center;
+  color: var(--pergaminho);
+}
+
+.ementa {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--dourado);
+  font-weight: 600;
+}
+
+.cabecalho h1 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  line-height: 1.2;
+}
+
+.trilha-rodadas {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.marca-rodada {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pergaminho);
+  border: 2px solid rgba(251, 245, 233, 0.35);
+  font-family: var(--font-display), serif;
+}
+
+.marca-rodada--atual {
+  background: var(--dourado);
+  border-color: var(--dourado);
+  color: var(--tinta);
+}
+
+.marca-rodada--concluida {
+  background: rgba(251, 245, 233, 0.18);
+  border-color: rgba(251, 245, 233, 0.6);
+}
+
+.texto-rodada {
+  margin: -0.75rem 0 0;
+  color: var(--pergaminho);
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.mesa {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.versus {
+  align-self: center;
+  font-family: var(--font-display), serif;
+  color: var(--dourado);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.painel-jogador {
+  flex: 1;
+  background: var(--pergaminho);
+  border: 2px solid var(--pergaminho-escuro);
+  border-radius: 1rem;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.painel-jogador--ativo {
+  border-color: var(--dourado);
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.35), 0 12px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.painel-jogador h2 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--tinta);
+}
+
+.par-dados {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.dado {
+  width: 4.6rem;
+  height: 4.6rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+}
+
+.dado img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dado--rolando img {
+  animation: girar 0.5s ease-in-out;
+}
+
+@keyframes girar {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.soma {
+  margin: 0;
+  font-weight: 600;
+  color: var(--tinta-suave);
+  font-size: 0.95rem;
+}
+
+.placar-mini {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--tinta-suave);
+}
+
+.botao {
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+  font-family: var(--font-body), sans-serif;
+}
+
+.botao--jogar {
+  background: var(--dourado);
+  color: var(--tinta);
+}
+
+.botao--jogar:hover:not(:disabled) {
+  background: var(--dourado-escuro);
+  transform: translateY(-1px);
+}
+
+.botao--jogar:disabled {
+  background: #d8d0bf;
+  color: #9a927e;
+  cursor: not-allowed;
+}
+
+.botao--avancar {
+  background: var(--feltro-800);
+  color: var(--pergaminho);
+}
+
+.botao--avancar:hover {
+  background: var(--feltro-700);
+  transform: translateY(-1px);
+}
+
+.botao--reiniciar {
+  background: var(--dourado);
+  color: var(--tinta);
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+}
+
+.botao--reiniciar:hover {
+  background: var(--dourado-escuro);
+  transform: translateY(-1px);
+}
+
+.resultado-rodada {
+  text-align: center;
+  color: var(--pergaminho);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  justify-content: center;
+}
+
+.resultado-texto {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.resultado-texto--espera {
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+.resultado-final {
+  text-align: center;
+  background: var(--pergaminho);
+  border-radius: 1rem;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 26rem;
+}
+
+.resultado-final__titulo {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--tinta);
+}
+
+.resultado-final__placar {
+  margin: 0;
+  color: var(--tinta-suave);
+  font-size: 1rem;
+}
+
+@media (max-width: 30rem) {
+  .mesa {
+    flex-direction: column;
+  }
+
+  .versus {
+    display: none;
+  }
+
+  .dado {
+    width: 3.8rem;
+    height: 3.8rem;
+  }
+}
