@@ -1,49 +1,8 @@
-# jogo-dados
+jogo-dados
 
-Jogo de dados para 2 jogadores, disputado em 5 rodadas. Em cada rodada os dois
-jogadores jogam dois dados; vence a rodada quem tirar a maior soma (empate se
-as somas forem iguais). Ao final das 5 rodadas, o jogo mostra quem venceu a
-partida (ou se houve empate geral) e permite reiniciar com "Jogar novamente".
+Jogo de dados para 2 jogadores, disputado em 5 rodadas. Em cada rodada os dois jogadores jogam dois dados; vence a rodada quem tirar a maior soma (empate se as somas forem iguais). Ao final das 5 rodadas, o jogo mostra quem venceu a partida (ou se houve empate geral) e permite reiniciar com "Jogar novamente".
 
-## Estrutura
-
-- `app/components/Dado.tsx` — componente que recebe a prop `valor` (1 a 6) e
-  exibe a imagem do dado correspondente (`public/dados/dado-N.svg`).
-- `app/components/JogoDados.tsx` — componente principal com a lógica do jogo
-  (rodadas, turnos, placar, resultado da rodada e resultado final).
-- `public/dados/` — imagens SVG dos 6 dados, salvas dentro do próprio projeto.
-
-## Rodando localmente
-
-```bash
-npm install
-npm run dev
-```
-
-Abra http://localhost:3000.
-
-## Build de produção
-
-```bash
-npm run build
-npm run start
-```
-
-## Publicando no GitHub
-
-```bash
-git init
-git add .
-git commit -m "Jogo de dados - 2 jogadores, 5 rodadas"
-git branch -M main
-git remote add origin <URL_DO_SEU_REPOSITORIO>
-git push -u origin main
-```
-
-## Publicando na Vercel
-
-1. Acesse https://vercel.com e faça login com sua conta do GitHub.
-2. Clique em "Add New… → Project" e selecione o repositório `jogo-dados`.
-3. Mantenha as configurações padrão (framework detectado automaticamente
-   como Next.js) e clique em "Deploy".
-4. Ao final, a Vercel fornecerá a URL pública do site.
+Estrutura
+app/components/Dado.tsx — componente que recebe a prop valor (1 a 6) e exibe a imagem do dado correspondente (public/dados/dado-N.svg).
+app/components/JogoDados.tsx — componente principal com a lógica do jogo (rodadas, turnos, placar, resultado da rodada e resultado final).
+public/dados/ — imagens SVG dos 6 dados, salvas dentro do próprio projeto.
